@@ -1,4 +1,4 @@
-프로젝트 제목 : 가위바위보 게임
+프로젝트 제목 : 가위바위보 게임<br/>
 프로젝트 배포 링크 : https://rock-paper-scissors-game-liart-alpha.vercel.app/
 
 [추가적으로 넣은 기능]
