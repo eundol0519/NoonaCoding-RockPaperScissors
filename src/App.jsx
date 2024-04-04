@@ -12,7 +12,6 @@ import Box from "./component/Box";
     - 승패에 따라 테두리 색이 바뀐다. (이기면 초록, 지면 빨강, 비기면 검정)
 */
 
-const cases = ["👊", "✌️", "✋"];
 const winOrLoseCases = {
   "👊": {
     "👊": "draw",
@@ -78,7 +77,7 @@ function App() {
 
   const computerChoiceHandler = () => {
     const random = Math.floor(Math.random() * 3);
-    setComputerChoice(cases[random]);
+    setComputerChoice(Object.keys(winOrLoseCases)[random]);
   };
 
   return (
@@ -88,7 +87,7 @@ function App() {
         <Box ref={computerRef} title="Computer" choice={computerChoice} result={result.computer} />
       </div>
       <div className="choiceBox">
-        {cases.map((item) => {
+        {Object.keys(winOrLoseCases).map((item) => {
           return (
             <p
               key={item}
