@@ -3,11 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import AppClass from './AppClass';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <h1>Function Component</h1>
     <App />
+    <h1>Class Component</h1>
+    <AppClass />
   </React.StrictMode>
 );
 

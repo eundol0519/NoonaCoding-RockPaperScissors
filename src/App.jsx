@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import "./App.css";
 import Box from "./component/Box";
+import { colorCases, winOrLoseCases } from "./constants/config";
 
 /*
   [유저 스토리]
@@ -11,24 +12,6 @@ import Box from "./component/Box";
     - 3, 4번의 결과를 바탕으로 승패를 가린다.
     - 승패에 따라 테두리 색이 바뀐다. (이기면 초록, 지면 빨강, 비기면 검정)
 */
-
-const winOrLoseCases = {
-  "👊": {
-    "👊": "draw",
-    "✌️": "win",
-    "✋": "lose",
-  },
-  "✌️": {
-    "👊": "lose",
-    "✌️": "drwa",
-    "✋": "win",
-  },
-  "✋": {
-    "👊": "win",
-    "✌️": "lose",
-    "✋": "draw",
-  },
-};
 
 function App() {
   const [userChoice, setUserChoice] = useState();
@@ -48,12 +31,6 @@ function App() {
 
   useEffect(() => {
     if (!result.user || !result.computer) return;
-
-    const colorCases = {
-      win: "green",
-      draw: "black",
-      lose: "red",
-    };
 
     /*
       [setProperty]
