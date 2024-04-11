@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./App.css";
 import Box from "./component/Box";
 import { colorCases, winOrLoseCases } from "./constants/config";
@@ -13,13 +13,18 @@ import { colorCases, winOrLoseCases } from "./constants/config";
     - 승패에 따라 테두리 색이 바뀐다. (이기면 초록, 지면 빨강, 비기면 검정)
 */
 
-function App() {
-  const [userChoice, setUserChoice] = useState();
-  const [computerChoice, setComputerChoice] = useState();
-  const [result, setResult] = useState({ user: null, computer: null });
+interface ResultType {
+  user: string;
+  computer: string;
+}
 
-  const userRef = useRef();
-  const computerRef = useRef();
+function App() {
+  const [userChoice, setUserChoice] = useState<string>("");
+  const [computerChoice, setComputerChoice] = useState<string>("");
+  const [result, setResult] = useState<ResultType>({ user: "", computer: "" });
+
+  const userRef = useRef<HTMLDivElement | null>(null);
+  const computerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!userChoice) return;
@@ -43,11 +48,11 @@ function App() {
 
       ref.current.style.borderColor = "black"; 이런 식으로 사용해도 됨
     */
-    userRef.current.style.setProperty("border-color", colorCases[result.user]);
-    computerRef.current.style.setProperty("border-color", colorCases[result.computer]);
+    userRef.current?.style.setProperty("border-color", colorCases[result.user]);
+    computerRef.current?.style.setProperty("border-color", colorCases[result.computer]);
   }, [result]);
 
-  const userChoiceHandler = (choice) => {
+  const userChoiceHandler = (choice: string) => {
     setUserChoice(choice);
     computerChoiceHandler();
   };
@@ -60,6 +65,7 @@ function App() {
   return (
     <>
       <div className="boxs">
+        {/* typescript에서 ref를 props로 전달할 때 ref라는 이름을 사용해야 한다. */}
         <Box ref={userRef} title="User" choice={userChoice} result={result.user} />
         <Box ref={computerRef} title="Computer" choice={computerChoice} result={result.computer} />
       </div>

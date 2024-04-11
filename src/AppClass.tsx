@@ -2,25 +2,33 @@ import React, { Component } from "react";
 import BoxClass from "./component/BoxClass";
 import { winOrLoseCases } from "./constants/config";
 
-export default class AppClass extends Component {
-  constructor(props) {
+interface PropsType {}
+
+interface StateType {
+  userChoice: string;
+  computerChoice: string;
+  result: { user: string; computer: string };
+}
+
+export default class AppClass extends Component<PropsType, StateType> {
+  constructor(props: PropsType) {
     super(props);
 
     this.state = {
-      userChoice: null,
-      computerChoice: null,
-      result: { user: null, computer: null },
+      userChoice: "",
+      computerChoice: "",
+      result: { user: "", computer: "" },
     };
   }
 
-  userChoiceHandler = (userChoice) => {
+  userChoiceHandler = (userChoice: string) => {
     const computerChoice = this.computerChoiceHandler();
     const result = this.resultHandler(userChoice, computerChoice);
 
     this.setState({
       userChoice: userChoice,
       computerChoice: computerChoice,
-      result: result || { user: null, computer: null },
+      result: result || { user: "", computer: "" },
     });
   };
 
@@ -29,7 +37,7 @@ export default class AppClass extends Component {
     return Object.keys(winOrLoseCases)[random];
   };
 
-  resultHandler = (userChoice, computerChoice) => {
+  resultHandler = (userChoice: string, computerChoice: string) => {
     if (!userChoice || !computerChoice) return;
 
     return {

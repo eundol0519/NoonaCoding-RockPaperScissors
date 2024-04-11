@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import { colorCases } from "../constants/config";
 
-export default class BoxClass extends Component {
+interface PropsType {
+  title: string;
+  choice: string;
+  result: string;
+}
+
+export default class BoxClass extends Component<PropsType> {
   render() {
     return (
       <div className="box" style={{ borderColor: colorCases[this.props.result] }}>
