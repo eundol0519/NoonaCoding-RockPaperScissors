@@ -9,9 +9,9 @@ import AppClass from "./AppClass";
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
   <React.StrictMode>
-    <h1>Function Component</h1>
+    <h1>👉 Function Component</h1>
     <App />
-    <h1>Class Component</h1>
+    <h1>👉 Class Component</h1>
     <AppClass />
   </React.StrictMode>
 );
